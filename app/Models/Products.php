@@ -19,6 +19,7 @@ class Products extends Model
         'id_user'
     ];
 
+    //Vai usar o relacionamento criado na migration
     public function user()
     {
         return $this->belongsTo(User::class, 'id_user');
