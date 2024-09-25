@@ -17,4 +17,12 @@ class SiteController extends Controller
         return view('site.home', 
         compact(['produtos','categorias']));
     }
+
+    public function detalhes($slug){
+        // Procurar produto com base no slug
+        $produto = Products::where('slug',$slug)
+        ->first();
+        //Passar o produto para a pagina de detalhes
+        return view('site.detalhes',compact('produto'));
+    }
 }

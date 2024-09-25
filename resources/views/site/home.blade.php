@@ -33,6 +33,7 @@
 </div>
 
 <!-- pagination -->
+ <!-- {{ $produtos->links('pagination::bootstrap-5')}} -->
  <!-- Componente de paginação -->
  @include('partials.pagination', [
         'items' => $produtos,
