@@ -9,20 +9,32 @@ use Illuminate\Http\Request;
 class SiteController extends Controller
 {
     //
-    public function index(){
+    public function index()
+    {
         //Estou pedindo os produtos paginados
         $produtos = Products::paginate(20);
-        //Estou pedindo todas as categorias
-        $categorias = Category::all();
-        return view('site.home', 
-        compact(['produtos','categorias']));
+        return view('site.home', compact(['produtos']));
     }
 
-    public function detalhes($slug){
+    public function detalhes($slug)
+    {
         // Procurar produto com base no slug
-        $produto = Products::where('slug',$slug)
-        ->first();
+        $produto = Products::where('slug', $slug)
+            ->first();
         //Passar o produto para a pagina de detalhes
-        return view('site.detalhes',compact('produto'));
+        return view('site.detalhes', compact('produto'));
+    }
+
+    public function categoria($categoria)
+    {
+        //Pesquisar por nome
+        //$categoria = Category::where('nome',$categoria)->first();
+        //Pesquisar por id
+        $categoria = Category::find($categoria);
+        // Pesquisar os produtos
+        $produtos = Products::where('id_category',$categoria->id)
+        ->paginate(8);
+        return view('site.categoria',
+        compact(['produtos','categoria']));
     }
 }

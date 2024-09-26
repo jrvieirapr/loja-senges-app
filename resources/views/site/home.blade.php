@@ -4,12 +4,7 @@
 
 <!-- inserir no yield do app sheet este fragmento -->
 @section('content')
-<style>
-    .home-margin{
-        margin-top: 10px;
-    }
-</style>
-<div class="row home-margin">
+<div class="row">
     @foreach($produtos as $produto)
     <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
         <div class="card h-100">
@@ -33,6 +28,7 @@
 </div>
 
 <!-- pagination -->
+ <!-- route('site.index'); -->
  <!-- {{ $produtos->links('pagination::bootstrap-5')}} -->
  <!-- Componente de paginação -->
  @include('partials.pagination', [

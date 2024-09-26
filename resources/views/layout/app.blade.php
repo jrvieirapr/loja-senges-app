@@ -19,7 +19,7 @@
     </header>
     <!-- Principal -->
     <main>
-        <div class="container">
+        <div class="container mt-5">
             @yield('content')
         </div>
     </main>

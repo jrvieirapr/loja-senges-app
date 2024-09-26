@@ -10,3 +10,7 @@ Route::get('/',[SiteController::class,'index'])
 Route::get('/site/produtos/{slug}',
 [SiteController::class,'detalhes'])
 ->name('site.detalhes');
+
+Route::get('/site/categoria/{categoria}',
+[SiteController::class,'categoria'])
+->name('site.categoria');
