@@ -19,57 +19,44 @@
                     <ul class="dropdown-menu">
                         @foreach($categoriasMenu as $categoria)
                         <li>
-                            <a class="dropdown-item" 
-                            href="/site/categoria/{{$categoria->id}}">
+                            <a class="dropdown-item"
+                                href="/site/categoria/{{$categoria->id}}">
                                 {{$categoria->nome}}
                             </a>
                         </li>
                         @endforeach
                     </ul>
                 </li>
-
-
-
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="/">Contato</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="/">Carrinho</a>
                 </li>
-                <!-- Se tiver Logado Mostre o perfil -->
-                <!-- Se tiver deslogado mostre o login -->
-                @auth
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a href="/"
-                            class="nav-link dropdown-toggle"
-                            id='userDropdown'
-                            role='button'
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            {{ auth()->user()->name}}>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li>
-                                <a href="#" class="dropdown-item">Perfil</a>
-                            </li>
-                            <li>
-                                <a href="#" class="dropdown-item">Sair</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-                @else
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a href="/"
-                            class="nav-link">
-                            Login
-                        </a>
-                    </li>
-                </ul>
-                @endauth
             </ul>
+            <!-- Se tiver Logado Mostre o perfil -->
+            <!-- Área de autenticação (alinhado à direita) -->
+            <ul class="navbar-nav ms-auto">
+                @auth
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ auth()->user()->name }}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                        <li>
+                            <a href="/perfil" class="dropdown-item">Perfil</a>
+                        </li>
+                        <li>
+                            <a href="/logout" class="dropdown-item">Sair</a>
+                        </li>
+                    </ul>
+                </li>
+                @else
+                <li class="nav-item">
+                    <a href="/login" class="nav-link">Login</a>
+                </li>
+                @endauth
+            </ul>           
         </div>
     </div>
 
