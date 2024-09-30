@@ -31,7 +31,7 @@
                     <a class="nav-link" aria-current="page" href="/">Contato</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/">Carrinho</a>
+                    <a class="nav-link" aria-current="page" href="/carrinho">Carrinho</a>
                 </li>
             </ul>
             <!-- Se tiver Logado Mostre o perfil -->

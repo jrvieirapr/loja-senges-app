@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CarrinhoController;
 use App\Http\Controllers\SiteController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
@@ -14,3 +15,7 @@ Route::get('/site/produtos/{slug}',
 Route::get('/site/categoria/{categoria}',
 [SiteController::class,'categoria'])
 ->name('site.categoria');
+
+// Rotas do carrinho
+Route::get('/carrinho',[CarrinhoController::class,'lista'])
+->name('site.carrinho');
