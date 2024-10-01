@@ -15,4 +15,51 @@ class CarrinhoController extends Controller
         //redirecionar para a view carrinho e passar itens
         return view('site.carrinho', compact('items'));
     }
+
+    public function adicionaCarrinho(Request $request)
+    {
+        // dd($request);
+        \Cart::add(
+            [
+                'id' => $request->id,
+                'name' => $request->name,
+                'price' => $request->price,
+                'quantity' => $request->qnt,
+                'attributes' => array(
+                    'image' => $request->img
+                )
+            ]
+        );
+        return redirect()->away('/carrinho')
+            ->with('success', 'Produto adiciondo com sucesso!');
+    }
+
+    public function removeCarrinho(Request $request)
+    {
+        \Cart::remove([
+
+            'id' => $request->id
+        ]);
+
+        return redirect()->away('/carrinho')
+            ->with('success', 'Produto removido com sucesso!');
+    }
+
+    public function atualizarCarrinho(Request $request){
+        \Cart::update($request->id,[
+            'quantity' =>[
+                'relative' => false,
+                'value' => $request->quantity
+            ]
+        ]);
+        return redirect()->away('/carrinho')
+            ->with('success', 'Produto atualizado com sucesso!');
+    }
+
+    public function limparCarrinho(){
+        \Cart::clean();
+        // return redirect()->route('site.carrinho');
+        return redirect()->away('/carrinho')
+            ->with('success', 'Carrinho limpo com sucesso!');
+    }
 }
