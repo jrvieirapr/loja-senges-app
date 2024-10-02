@@ -3,7 +3,7 @@
 @section('content')
 <!-- Verificar se tem algum item no carrinho -->
 <div class="row">
-    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 mx-auto">
+    <div class="mx-auto">
         @if($items->count() == 0)
         <!-- se estiver mostre mostre sem itens -->
         <h2>Carrinho Vazio!</h2>
@@ -13,7 +13,7 @@
         <table class='table mt-3 table-bordered text-center striped'>
             <thead>
                 <tr>
-                    <th>Nome</th>
+                    <th colspan="2">Nome</th>
                     <th>Preço</th>
                     <th>Quantidade</th>
                     <th>Ações</th>
@@ -23,13 +23,13 @@
                 @foreach($items as $item)
                 <tr>
                     <td>
-                        <img src="{{$item->imagem}}"
-                            alt="{{$item->nome}}"
+                        <img src="{{$item->attributes->image}}"
+                            alt="{{$item->name}}"
                             class="img-fluid rounded-circle"
                             width="80px">
                     </td>
                     <td>
-                        {{$item->nome}}
+                        {{$item->name}}
                     </td>
                     <td>
                         R$ {{ number_format($item->price, 2,',','.')}}
