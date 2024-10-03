@@ -14,6 +14,11 @@ class CategoryController extends Controller
     public function index()
     {
         //
+        $categorias = Category::paginate(25);
+        return view(
+            'admin.categorias.index',
+            compact('categorias')
+        );
     }
 
     /**
@@ -22,6 +27,7 @@ class CategoryController extends Controller
     public function create()
     {
         //
+        return view('admin.categorias.create');
     }
 
     /**
@@ -30,6 +36,12 @@ class CategoryController extends Controller
     public function store(StoreCategoryRequest $request)
     {
         //
+        Category::create($request->all());
+        return redirect()->away('/categorias')
+            ->with(
+                'success',
+                'Categoria salva com sucesso!'
+            );
     }
 
     /**
@@ -38,6 +50,10 @@ class CategoryController extends Controller
     public function show(Category $category)
     {
         //
+        return view(
+            'admin.categorias.show',
+            compact('category')
+        );
     }
 
     /**
@@ -46,6 +62,10 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
         //
+        return view(
+            'admin.categorias.edit',
+            compact('category')
+        );
     }
 
     /**
@@ -54,6 +74,12 @@ class CategoryController extends Controller
     public function update(UpdateCategoryRequest $request, Category $category)
     {
         //
+        $category->update($request->all());
+        return redirect()->away('/categorias')
+            ->with(
+                'success',
+                'Categoria atualizada com sucesso!'
+            );
     }
 
     /**
@@ -62,5 +88,18 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         //
+        if ($category->produtos()->count() > 0) {
+            return redirect()->away('/categorias')
+                ->with(
+                    'error',
+                    'Categoria possui dependentes!'
+                );
+        }
+        $category->delete();
+        return redirect()->away('/categorias')
+            ->with(
+                'success',
+                'Categoria removida com suceso!'
+            );
     }
 }

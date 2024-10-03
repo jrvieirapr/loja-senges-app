@@ -1,8 +1,11 @@
 <?php
 
 use App\Http\Controllers\CarrinhoController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\SiteController;
 use App\Models\Category;
+use App\Models\Products;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/',[SiteController::class,'index'])
@@ -31,3 +34,7 @@ Route::post('/carrinho/atualiza',[CarrinhoController::class,
 
 Route::get('/carrinho/limpar',[CarrinhoController::class,
 'limparCarrinho'])->name('site.limparcarrinho');
+
+Route::resource('/admin/categorias',CategoryController::class);
+
+Route::resource('/admin/produtos',ProductsController::class);
