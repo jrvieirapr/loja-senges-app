@@ -92,6 +92,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        
         if ($category->produtos()->count() > 0) {
             return redirect()->away('/admin/categorias')
                 ->with(
