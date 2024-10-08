@@ -80,9 +80,10 @@ class ProductsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProductsRequest $request, Products $products)
+    public function update(UpdateProductsRequest $request,$id)
     {
         //
+        $products = Products::find($id);
         $products->update($request->all());
         return redirect()->away('/produtos')
             ->with(
