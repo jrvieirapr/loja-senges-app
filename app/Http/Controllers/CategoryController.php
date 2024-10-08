@@ -52,9 +52,10 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Category $category)
+    public function show($id)
     {
         //
+        $category = Category::find($id);
         return view(
             'admin.categorias.show',
             compact('category')
@@ -64,8 +65,9 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
+        $category = Category::find($id);
         //
         return view(
             'admin.categorias.edit',
@@ -90,10 +92,11 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        
-        if ($category->produtos()->count() > 0) {
+        $category = Category::find($id);
+
+        if (!$category || $category->produtos()->count() > 0) {
             return redirect()->away('/admin/categorias')
                 ->with(
                     'error',

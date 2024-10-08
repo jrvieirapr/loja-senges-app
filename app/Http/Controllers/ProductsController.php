@@ -47,28 +47,34 @@ class ProductsController extends Controller
         // Redireciona ou gera um response
         //onde esta away devo usar route('admin.produtos.index')
         return redirect()->away('/produtos')
-        ->with('success', 'Produto criado com sucesso!');
+            ->with('success', 'Produto criado com sucesso!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Products $products)
+    public function show($id)
     {
         //
-        return view('admin.produtos.show', 
-        compact('products'));
+        $product = Products::find($id);
+        return view(
+            'admin.produtos.show',
+            compact('product')
+        );
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Products $products)
+    public function edit($id)
     {
         //
         $categorias = Category::all();
-        return view('admin.produtos.edit', 
-        compact('products','categorias'));
+        $product = Products::find($id);
+        return view(
+            'admin.produtos.edit',
+            compact('products', 'categorias')
+        );
     }
 
     /**
@@ -79,19 +85,24 @@ class ProductsController extends Controller
         //
         $products->update($request->all());
         return redirect()->away('/produtos')
-        ->with('success', 
-        'Produto atualizado com sucesso!');
+            ->with(
+                'success',
+                'Produto atualizado com sucesso!'
+            );
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Products $products)
+    public function destroy($id)
     {
         //
-        $products->delete();
+        $product = Products::find($id);
+        $product->delete();
         return redirect()->away('/produtos')
-        ->with('success', 
-        'Produto removido com sucesso!');
+            ->with(
+                'success',
+                'Produto removido com sucesso!'
+            );
     }
 }
