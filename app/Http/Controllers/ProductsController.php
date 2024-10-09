@@ -73,7 +73,7 @@ class ProductsController extends Controller
         $product = Products::find($id);
         return view(
             'admin.produtos.edit',
-            compact('products', 'categorias')
+            compact('product', 'categorias')
         );
     }
 

@@ -86,7 +86,9 @@
             <option selected disabled>Selecione uma opção</option>
             @foreach($categorias as $categoria)
             <option value="{{$categoria->id}}"
-                {{ old('id_category') == $categoria->id ? "selected" : ""}}>{{$categoria->nome}}</option>
+                {{ old('id_category') == $categoria->id ? "selected" : ""}}>
+                {{$categoria->nome}}
+                </option>
             @endforeach
         </select>
         @if($errors->has('id_category'))
@@ -96,10 +98,6 @@
             @endforeach
         </div>
         @endif
-    </div>
-    <div>
-        <input type="hidden" name="user_id"
-            value={{Auth::user()->id}}>
     </div>
 
     <button type="submit" class="btn btn-success mt-2">
