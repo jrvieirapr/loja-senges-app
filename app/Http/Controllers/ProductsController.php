@@ -43,10 +43,16 @@ class ProductsController extends Controller
     public function store(StoreProductsRequest $request)
     {
         //Salvar o registro atraves do modelo
-        Products::create($request->all());
+        //Products::create($request->all());
+        // Obter o ID do usuário autenticado
+        $userId = auth()->id();
+
+        // Criar e salvar o produto, associando o ID do usuário
+        Products::create(array_merge($request->validated(), ['id_user' => $userId]));
+
         // Redireciona ou gera um response
         //onde esta away devo usar route('admin.produtos.index')
-        return redirect()->away('/produtos')
+        return redirect()->away('/admin/produtos')
             ->with('success', 'Produto criado com sucesso!');
     }
 
@@ -80,12 +86,17 @@ class ProductsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProductsRequest $request,$id)
+    public function update(UpdateProductsRequest $request, $id)
     {
-        //
-        $products = Products::find($id);
-        $products->update($request->all());
-        return redirect()->away('/produtos')
+        // Encontrar o produto ou lançar um erro 404 se não existir
+        $product = Products::findOrFail($id);
+
+        // Obter o ID do usuário autenticado
+        $userId = auth()->id();
+
+        // Atualizar o produto com os dados validados e o ID do usuário
+        $product->update(array_merge($request->validated(), ['id_user' => $userId]));
+        return redirect()->away('/admin/produtos')
             ->with(
                 'success',
                 'Produto atualizado com sucesso!'
@@ -100,7 +111,7 @@ class ProductsController extends Controller
         //
         $product = Products::find($id);
         $product->delete();
-        return redirect()->away('/produtos')
+        return redirect()->away('/admin/produtos')
             ->with(
                 'success',
                 'Produto removido com sucesso!'

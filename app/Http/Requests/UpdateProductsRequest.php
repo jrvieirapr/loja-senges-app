@@ -29,7 +29,6 @@ class UpdateProductsRequest extends FormRequest
             'slug'=> 'required|string|max:255',
             'image'=>'nullable|string|max:255',
             'id_category' =>'required|exists:categories,id',
-            'id_user' => 'required|exists:users,id'
         ];
     }
 }
