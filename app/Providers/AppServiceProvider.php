@@ -22,7 +22,7 @@ class AppServiceProvider extends ServiceProvider
     {
         //Aqui eu deixo disponivel para toda aplicao
         //Estou pedindo todas as categorias
-        $categoriasMenu = Category::all();
-        view()->share('categoriasMenu',$categoriasMenu);        
+        // $categoriasMenu = Category::all();
+        // view()->share('categoriasMenu',$categoriasMenu);
     }
 }
