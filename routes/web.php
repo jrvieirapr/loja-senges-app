@@ -3,10 +3,24 @@
 use App\Http\Controllers\CarrinhoController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SiteController;
-use App\Models\Category;
-use App\Models\Products;
 use Illuminate\Support\Facades\Route;
+
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/perfil', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/perfil', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/perfil', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::resource('/admin/categorias',CategoryController::class);
+
+    Route::resource('/admin/produtos',ProductsController::class);
+});
 
 Route::get('/',[SiteController::class,'index'])
 ->name('site.home');
@@ -35,6 +49,5 @@ Route::post('/carrinho/atualiza',[CarrinhoController::class,
 Route::get('/carrinho/limpar',[CarrinhoController::class,
 'limparCarrinho'])->name('site.limparcarrinho');
 
-Route::resource('/admin/categorias',CategoryController::class);
 
-Route::resource('/admin/produtos',ProductsController::class);
+require __DIR__.'/auth.php';
