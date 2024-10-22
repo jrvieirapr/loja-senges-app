@@ -18,7 +18,7 @@
 
                 <div class="d-flex justify-content-between align-items-center mt-4">
                     <!-- Reenviar e-mail de verificação -->
-                    <form method="POST" action="{{ route('verification.send') }}">
+                    <form method="POST" action="/email/verification-notification">
                         @csrf
                         <button type="submit" class="btn btn-primary">
                             {{ __('Reenviar E-mail de Verificação') }}

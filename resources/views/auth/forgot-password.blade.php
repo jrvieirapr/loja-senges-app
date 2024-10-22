@@ -18,7 +18,7 @@
                 @endif
 
                 <!-- Formulário de E-mail para Redefinição de Senha -->
-                <form method="POST" action="{{ route('password.email') }}">
+                <form method="POST" action="/forgot-password">
                     @csrf
 
                     <!-- Endereço de E-mail -->

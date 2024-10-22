@@ -10,7 +10,7 @@
                     {{ __('Esta é uma área segura da aplicação. Por favor, confirme sua senha antes de continuar.') }}
                 </div>
 
-                <form method="POST" action="{{ route('password.confirm') }}">
+                <form method="POST" action="/confirm-password">
                     @csrf
 
                     <!-- Senha -->

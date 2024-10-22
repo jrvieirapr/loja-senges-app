@@ -6,7 +6,7 @@
     <div class="container py-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <form method="POST" action="{{ route('password.store') }}">
+                <form method="POST" action="/reset-password">
                     @csrf
 
                     <!-- Token de Redefinição de Senha -->
