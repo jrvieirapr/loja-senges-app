@@ -14,7 +14,7 @@
                 @endif
 
                 <!-- Formulário de Login -->
-                <form method="POST" action="{{ route('login') }}">
+                <form method="POST" action="/login">
                     @csrf
 
                     <!-- Endereço de E-mail -->
@@ -48,7 +48,7 @@
                     <!-- Ações -->
                     <div class="d-flex justify-content-between align-items-center mt-4">
                         @if (Route::has('password.request'))
-                            <a class="text-sm text-muted" href="{{ route('password.request') }}">
+                            <a class="text-sm text-muted" href="/forgot-password">
                                 {{ __('Esqueceu sua senha?') }}
                             </a>
                         @endif

@@ -6,7 +6,7 @@
     <div class="container py-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <form method="POST" action="{{ route('register') }}">
+                <form method="POST" action="/register">
                     @csrf
 
                     <!-- Nome -->
@@ -54,7 +54,7 @@
                     </div>
 
                     <div class="d-flex justify-content-between align-items-center mt-4">
-                        <a class="text-sm text-muted" href="{{ route('login') }}">
+                        <a class="text-sm text-muted" href="/login">
                             {{ __('Já registrado?') }}
                         </a>
 
