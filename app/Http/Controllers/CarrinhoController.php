@@ -64,4 +64,11 @@ class CarrinhoController extends Controller
         return redirect()->away('/carrinho')
             ->with('success', 'Carrinho limpo com sucesso!');
     }
+
+    public function finalizar(){
+        // pegar itens dos carrinho
+        $items = \Cart::getContent();
+        //redirecionar para a view carrinho e passar itens
+        return view('site.finalizar', compact('items'));
+    }
 }

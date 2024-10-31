@@ -80,10 +80,10 @@
             <a class="btn btn-primary" href="/">
                 Continuar Comprando
             </a>
-            <a class="btn btn-warning">
+            <a class="btn btn-warning" href="/carrinho/finalizar">
                 Finalizar Compra
             </a>
-            <a class="btn btn-info" href="/carrinho/limpar">
+            <a class="btn btn-secondary" href="/carrinho/limpar">
                 Limpar Carrinho
             </a>
         </div>
