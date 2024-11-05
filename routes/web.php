@@ -22,11 +22,12 @@ Route::middleware('auth')->group(function () {
     Route::resource('/admin/produtos', ProductsController::class);
 
 
-    Route::get('/carrinho/finalizar', [
-        CarrinhoController::class,
-        'finalizar'
-    ])->name('site.finalizar');
+Route::get('/carrinho/finalizar', [
+    CarrinhoController::class,
+    'finalizar'
+])->name('site.finalizar');
 });
+
 
 Route::get('/', [SiteController::class, 'index'])
     ->name('site.home');

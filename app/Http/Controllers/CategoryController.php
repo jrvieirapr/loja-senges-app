@@ -65,11 +65,10 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
-        // $category = Category::find($id);
-        //
-        dd($category);
+        $category = Category::find($id);        
+  
         return view(
             'admin.categorias.edit',
             compact('category')

@@ -31,7 +31,7 @@
                 </td>
                 <!-- Editar -->
                 <td>
-                    <a href="/admin/categorias/{{$categoria}}/edit" class="btn btn-sm btn-success">
+                    <a href="/admin/categorias/{{$categoria->id}}/edit" class="btn btn-sm btn-success">
                         <i class="bi bi-pencil"></i>
                     </a>
                 </td>
