@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3 shadow-sm">
+<nav class="navbar navbar-expand-lg navbar-dark color-fundo py-3 shadow-sm">
     <div class="container-fluid">
         <!-- Coluna Esquerda: Logo da loja -->
         <a href="/" class="navbar-brand fw-bold">Loja Senges</a>

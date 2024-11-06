@@ -77,13 +77,13 @@
         </table>
         <!-- Botoes -->
         <div class="text-center">
-            <a class="btn btn-primary" href="/">
+            <a class="btn color-continuar" href="/">
                 Continuar Comprando
             </a>
-            <a class="btn btn-warning" href="/carrinho/finalizar">
+            <a class="btn color-finalizar" href="/carrinho/finalizar">
                 Finalizar Compra
             </a>
-            <a class="btn btn-secondary" href="/carrinho/limpar">
+            <a class="btn color-limpar" href="/carrinho/limpar">
                 Limpar Carrinho
             </a>
         </div>

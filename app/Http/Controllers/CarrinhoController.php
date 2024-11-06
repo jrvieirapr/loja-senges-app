@@ -69,6 +69,7 @@ class CarrinhoController extends Controller
         // pegar itens dos carrinho
         $items = \Cart::getContent();
         //redirecionar para a view carrinho e passar itens
+        \Cart::clear();
         return view('site.finalizar', compact('items'));
     }
 }

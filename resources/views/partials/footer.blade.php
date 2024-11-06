@@ -1,4 +1,4 @@
-<footer class="bg-dark text-white text-center p-4">
+<footer class="color-fundo text-white text-center p-4">
     <div class="container">
         <p>&copy 2024 Loja Senges. Todos os direitos reservados.</p>
         <p>Rua do Centro de Senges, 100, Senges - PR, CEP 84220-000.</p>
