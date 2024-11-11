@@ -17,37 +17,68 @@ Route::middleware('auth')->group(function () {
     Route::patch('/perfil', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/perfil', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::resource('/admin/categorias',CategoryController::class);
+    Route::resource('/admin/categorias', CategoryController::class);
 
-    Route::resource('/admin/produtos',ProductsController::class);
+    Route::resource('/admin/produtos', ProductsController::class);
+
+
+Route::get('/carrinho/finalizar', [
+    CarrinhoController::class,
+    'finalizar'
+])->name('site.finalizar');
 });
 
-Route::get('/',[SiteController::class,'index'])
-->name('site.home');
+Route::get('/carrinho/pedido', [
+    CarrinhoController::class,
+    'pedido'
+])->name('site.pedido');
 
-Route::get('/site/produtos/{slug}',
-[SiteController::class,'detalhes'])
-->name('site.detalhes');
 
-Route::get('/site/categoria/{categoria}',
-[SiteController::class,'categoria'])
-->name('site.categoria');
+
+Route::get('/', [SiteController::class, 'index'])
+    ->name('site.home');
+
+Route::get(
+    '/site/produtos/{slug}',
+    [SiteController::class, 'detalhes']
+)
+    ->name('site.detalhes');
+
+Route::get(
+    '/site/categoria/{categoria}',
+    [SiteController::class, 'categoria']
+)
+    ->name('site.categoria');
+
+
+ Route::post('/site/produtos/pesquisa',
+[SiteController::class,'pesquisa'])
+->name('site.pesquisa');   
 
 // Rotas do carrinho
-Route::get('/carrinho',[CarrinhoController::class,'lista'])
-->name('site.carrinho');
+Route::get('/carrinho', [CarrinhoController::class, 'lista'])
+    ->name('site.carrinho');
 
-Route::post('/carrinho',[CarrinhoController::class,
-'adicionaCarrinho'])->name('site.addcarrinho');
+Route::post('/carrinho', [
+    CarrinhoController::class,
+    'adicionaCarrinho'
+])->name('site.addcarrinho');
 
-Route::post('/carrinho/remove',[CarrinhoController::class,
-'removeCarrinho'])->name('site.remcarrinho');
+Route::post('/carrinho/remove', [
+    CarrinhoController::class,
+    'removeCarrinho'
+])->name('site.remcarrinho');
 
-Route::post('/carrinho/atualiza',[CarrinhoController::class,
-'atualizarCarrinho'])->name('site.updatecarrinho');
+Route::post('/carrinho/atualiza', [
+    CarrinhoController::class,
+    'atualizarCarrinho'
+])->name('site.updatecarrinho');
 
-Route::get('/carrinho/limpar',[CarrinhoController::class,
-'limparCarrinho'])->name('site.limparcarrinho');
+Route::get('/carrinho/limpar', [
+    CarrinhoController::class,
+    'limparCarrinho'
+])->name('site.limparcarrinho');
 
 
-require __DIR__.'/auth.php';
+
+require __DIR__ . '/auth.php';
