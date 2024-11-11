@@ -41,6 +41,11 @@
                 </tr>
             </tfoot>
         </table>
+        <div class="text-center">
+            <a class="btn color-finalizar" href="/carrinho/pedido">
+                Realizar Pedido
+            </a>
+        </div>
     </div>
 </div>
 

@@ -28,6 +28,12 @@ Route::get('/carrinho/finalizar', [
 ])->name('site.finalizar');
 });
 
+Route::get('/carrinho/pedido', [
+    CarrinhoController::class,
+    'pedido'
+])->name('site.pedido');
+
+
 
 Route::get('/', [SiteController::class, 'index'])
     ->name('site.home');

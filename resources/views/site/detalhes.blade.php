@@ -52,7 +52,7 @@
             <button
                 type='submit'
                 class="btn btn-warning btn-large">
-                Adcionar ao Carrinho
+                Adicionar ao Carrinho
             </button>
         </form>
     </div>
